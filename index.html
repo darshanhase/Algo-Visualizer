@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AlgoViz - Sorting Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="text-center p-4">
+    <h1>AlgoViz : Visualize. Learn. Master.</h1>
+    
+  </header>
+
+  <!-- Main Content -->
+   <!-- Link to Binary Search Page (Centered) -->
+<div class="d-flex justify-content-center mt-3">
+  <a href="linear.html" class="btn btn-primary mt-3">Go to Linear Search</a>
+  <a href="binary.html" class="btn btn-primary mt-3">Go to Binary Search</a></div>
+
+  
+
+  <h2 class="text-center mt-4">Sorting Algorithms</h2>
+
+  <main class="container text-center text-aqua">
+    <div class="my-4">
+      <input id="arrayInput" type="text" class="form-control" placeholder="Enter numbers separated by commas (e.g., 20,10,30)">
+      <button class="btn btn-primary mt-3" onclick="generateBars()">Generate Bars</button>
+    </div>
+
+    <!-- Sort Buttons -->
+    <div class="btn-group my-2" role="group">
+      <button class="btn btn-success" onclick="startBubbleSort()">Bubble Sort</button>
+      <button class="btn btn-info" onclick="startSelectionSort()">Selection Sort</button>
+      <button class="btn btn-success " onclick="startInsertionSort()">Insertion Sort</button>
+      <button class="btn btn-danger" onclick="startMergeSort()">Merge Sort</button>
+      <button class="btn btn-info" onclick="startQuickSort()">Quick Sort</button>
+      <button class="btn btn-danger" onclick="startHeapSort()">Heap Sort</button>
+    </div>
+    <br><button class="btn btn-primary mt-3" onclick="pauseSort()">Pause</button>
+
+    <!-- Speed Control Slider -->
+    <div class="my-3">
+      <label for="speedRange">Speed Control (0.1x to 1x)</label>
+      <input type="range" min="1" max="20" step="1" value="10" id="speedRange" onchange="updateSpeed()">
+      <span id="speedValue">0.5</span>x
+    </div>
+
+    <!-- Bar Container -->
+    <div id="bar-container"></div>
+
+    <!-- Description Section -->
+    
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-3 mt-5">
+   
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/common.js"></script>
+  <script src="js/bubbleSort.js"></script>
+  <script src="js/selectionSort.js"></script>
+  <script src="js/insertionSort.js"></script>
+  <script src="js/mergeSort.js"></script>
+  <script src="js/quickSort.js"></script>
+  <script src="js/heapSort.js"></script>
+</body>
+</html>

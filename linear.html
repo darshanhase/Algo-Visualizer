@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Linear Search Visualizer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1b1e25;
+      color: aqua;
+    }
+    .container {
+      padding: 50px;
+    }
+    .search-item {
+      display: inline-block;
+      padding: 10px;
+      margin: 5px;
+      background-color: steelblue;
+      color: white;
+      font-weight: bold;
+    }
+    .found {
+      background-color: green;
+    }
+    .searching {
+      background-color: red;
+    }
+    .current {
+      background-color: yellow;
+    }
+    .boundary {
+      background-color: orange;
+    }
+    .btn {
+      margin: 10px;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <h2>Linear Search Visualizer</h2>
+    <p>Visualize the Linear Search Algorithm.</p>
+
+    <div class="my-4">
+      <input id="arrayInput" type="text" class="form-control" placeholder="Enter numbers separated by commas (e.g., 20,10,30)">
+      <button class="btn btn-primary mt-3" onclick="generateArray()">Generate Array</button>
+      <button class="btn btn-success mt-3 ms-2" onclick="startLinearSearch()">Start Linear Search</button>
+    </div>
+
+    <!-- Array Container -->
+    <div id="array-container" class="my-4"></div>
+
+    <!-- Message for result -->
+    <div id="message"></div>
+
+    <!-- Back to Sorting Page -->
+    <a href="index.html" class="btn btn-primary mt-3">Back to Sorting Visualizer</a>
+  </div>
+
+  <script>
+    let searchArray = [];
+    let isPaused = false;
+    let searchInProgress = false;
+
+    function generateArray() {
+      const input = document.getElementById('arrayInput').value;
+      searchArray = input.split(',').map(v => parseInt(v.trim())).filter(v => !isNaN(v));
+      const container = document.getElementById('array-container');
+      container.innerHTML = '';
+
+      searchArray.forEach(val => {
+        const item = document.createElement('div');
+        item.classList.add('search-item');
+        item.textContent = val;
+        container.appendChild(item);
+      });
+    }
+
+    async function startLinearSearch() {
+      if (searchInProgress) return;
+      searchInProgress = true;
+      const items = document.querySelectorAll('.search-item');
+      const target = parseInt(prompt('Enter the value to search for:'));
+      let found = false;
+
+      for (let i = 0; i < searchArray.length; i++) {
+        if (isPaused) {
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+
+        // Highlight the current item being checked
+        items[i].classList.add('current');
+        await new Promise(resolve => setTimeout(resolve, 500)); // Delay for visualization
+
+        if (searchArray[i] === target) {
+          items[i].classList.add('found');
+          found = true;
+          document.getElementById('message').textContent = 'Found ' + target + ' at index ' + i;
+          break;
+        }
+        
+        // Reset color for the current item and move to next
+        items[i].classList.remove('current');
+      }
+
+      // If not found, display the message
+      if (!found) {
+        document.getElementById('message').textContent = 'Number ' + target + ' not found!';
+      }
+
+      searchInProgress = false;
+    }
+  </script>
+</body>
+</html>

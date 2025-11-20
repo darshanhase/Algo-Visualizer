@@ -1,0 +1,55 @@
+/* Apply background and text color to entire page */
+body {
+  background-color: rgb(31, 41, 42) !important;
+  color: aqua !important;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Header and Footer styling */
+header, footer {
+  background-color: black;
+  color: aqua;
+  padding: 20px 0;
+}
+
+/* Container text */
+.container h2,
+.container p,
+.container label {
+  color: aqua;
+}
+
+/* Buttons */
+button, .btn {
+  color: black !important;
+  font-weight: bold;
+}
+
+/* Bar styles */
+#bar-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 400px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.bar {
+  background-color: steelblue;
+  margin: 0 3px;
+  width: 30px;
+  position: relative;
+  transition: height 0.5s ease;
+}
+
+.bar-value {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
